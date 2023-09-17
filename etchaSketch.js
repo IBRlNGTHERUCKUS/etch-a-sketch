@@ -12,3 +12,26 @@ for (let i = 0; i < gridHeight; i++) {
     }
     gridContainer.appendChild(tempGridRow);
 }
+
+function paintCell (e, color) {
+    const cell = e.target;
+    if (e.target.className === 'gridCell') {
+        cell.style.background = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+    }
+}
+function getRandomRGB(){
+    let color = {
+        red: null, 
+        green: null,
+        blue: null
+    }
+    for (let key in color) {
+        color[key] = Math.floor(Math.random() * 255)
+    }
+    return color;
+}
+
+let color = getRandomRGB();
+
+document.addEventListener('mouseover', 
+    (e)=>{paintCell(e, getRandomRGB());})

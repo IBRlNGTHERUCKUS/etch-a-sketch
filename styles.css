@@ -24,3 +24,7 @@ body {
     border: blue 1px solid;
     flex: 1;
 }
+
+.gridCell.hovered {
+    background: pink;
+}
