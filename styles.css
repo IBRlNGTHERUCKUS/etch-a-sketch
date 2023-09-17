@@ -1,0 +1,13 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 5%;
+}
+
+.gridContainer {
+    border: black 3px solid;
+    height: 100vw;
+    width: 100vw;
+}
