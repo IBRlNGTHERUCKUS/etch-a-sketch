@@ -67,3 +67,24 @@ function getRandomHSL(){
 document.addEventListener('mouseover', 
     (e)=>{paintCell(e, getRandomRGB());}) 
 //    (e)=>{paintCell(e, getRandomHSL());})
+
+const sliderBox = document.querySelector('.switch');
+const slider = document.querySelector('.slider');
+slider.addEventListener('click', handleSlider);
+function handleSlider() {
+    animateSlider()
+
+}
+function animateSlider() {
+    slider.style.width = '100%';
+    setTimeout(()=>{
+        if (sliderBox.style.justifyContent == 'flex-end') {
+            sliderBox.style.justifyContent = 'flex-start';
+        }
+        else {
+            sliderBox.style.justifyContent = 'flex-end';
+        }
+        slider.style.width = '40%';
+    }, 350)
+    
+}

@@ -62,11 +62,10 @@ h1 {
 
 .switch {
     display: flex;
-    padding: 3px;
+    align-items: center;
     width: 25%;
+    height: 10%;
     background: #e6ede4;
-    justify-content: flex-start;
-    transition: justify-content 30s;
 }
 
 /* Hide default HTML checkbox */
@@ -74,9 +73,13 @@ h1 {
     opacity: 0;
     width: 0;
     height: 0;
+    margin: 0px;
   }
 
-.slider {
+.slider {  
+    display: block;
     width: 40%;
-    background: blue
+    height: 90%;
+    background: blue;
+    transition: width 400ms;
 }
