@@ -65,6 +65,8 @@ h1 {
     align-items: center;
     width: 25%;
     height: 10%;
+    border-radius: 8px;
+    padding: 2px;
     background: #e6ede4;
 }
 
@@ -74,12 +76,18 @@ h1 {
     width: 0;
     height: 0;
     margin: 0px;
+    justify-content: flex-start;
   }
 
 .slider {  
     display: block;
     width: 40%;
     height: 90%;
+    border-radius: 8px;
     background: blue;
     transition: width 400ms;
+}
+
+.switch.right {
+    justify-content: flex-end;
 }

@@ -15,6 +15,7 @@ else {
 */
 let gridWidth = 16;
 let gridHeight = 16;
+let colorType = 'rgb'
 
 for (let i = 0; i < gridHeight; i++) {
     const tempGridRow = document.createElement('div');
@@ -28,13 +29,21 @@ for (let i = 0; i < gridHeight; i++) {
     gridContainer.appendChild(tempGridRow);
 }
 
-function paintCell (e, color) {
+function paintCell (e) {
     const cell = e.target;
     if (cell.className === 'gridCell') {
-        //cell.style.background = `hsl(${color.hue}, ${color.saturation}%, ${color.lightness}%)`;
-        cell.style.background = `rgb(${color.red}, ${color.green}, ${color.blue})`;
-        cell.classList.add('painted');
+        // Allow support for both color formats
+        if (colorType == 'pastel'){
+            let color = getRandomHSL();
+            cell.style.background = `hsl(${color.hue}, ${color.saturation}%, ${color.lightness}%)`;
+        }
+        else if (colorType === 'rgb'){
+            let color = getRandomRGB();
+            cell.style.background = `rgb(${color.red}, ${color.green}, ${color.blue})`;
+        }
+            cell.classList.add('painted');
     }
+    // darken if cell is rehovered
     else if (cell.className === 'gridCell painted') {
         let brightness = cell.dataset.brightness - 20;
         cell.dataset.brightness = cell.dataset.brightness - 20;
@@ -64,26 +73,38 @@ function getRandomHSL(){
     }
 }
 
-document.addEventListener('mouseover', 
-    (e)=>{paintCell(e, getRandomRGB());}) 
+function resetCells(){
+    const allCells = document.querySelectorAll('.gridCell');
+    // reset cells
+    for (const cell of allCells) {
+        cell.style.background = 'white';
+        cell.style.filter = 'brightness(100%)'
+        cell.classList.remove('painted');
+        cell.dataset.brightness = '100';
+    }
+}
+
+document.addEventListener('mouseover', paintCell) 
 //    (e)=>{paintCell(e, getRandomHSL());})
 
 const sliderBox = document.querySelector('.switch');
 const slider = document.querySelector('.slider');
 slider.addEventListener('click', handleSlider);
 function handleSlider() {
-    animateSlider()
+    animateSlider();
+    resetCells();
+    if (colorType == 'pastel'){
+        colorType = 'rgb';
+    }
+    else {
+        colorType = 'pastel';
+    }
 
 }
 function animateSlider() {
     slider.style.width = '100%';
     setTimeout(()=>{
-        if (sliderBox.style.justifyContent == 'flex-end') {
-            sliderBox.style.justifyContent = 'flex-start';
-        }
-        else {
-            sliderBox.style.justifyContent = 'flex-end';
-        }
+        sliderBox.classList.toggle('right');
         slider.style.width = '40%';
     }, 350)
     
