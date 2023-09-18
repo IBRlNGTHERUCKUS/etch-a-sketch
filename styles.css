@@ -3,13 +3,13 @@ body {
     display: flex;
     justify-content: center;
     align-content: center;
-    padding: 5%;
+    margin: 0;
 }
 
 .gridContainer {
     border: black 3px solid;
-    height: 100vw;
-    width: 100vw;
+    height: 400px;
+    width: 400px;
     display:flex;
     flex-direction: column;
 }
@@ -23,8 +23,5 @@ body {
 .gridCell {
     border: blue 1px solid;
     flex: 1;
-}
-
-.gridCell.hovered {
-    background: pink;
+    filter: brightness(100%);
 }
