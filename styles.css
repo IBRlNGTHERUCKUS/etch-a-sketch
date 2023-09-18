@@ -18,10 +18,10 @@ body {
     border: red 2px solid;
     display: flex;
     flex: 1;
+    
 }
 
 .gridCell {
     border: blue 1px solid;
     flex: 1;
-    filter: brightness(100%);
 }

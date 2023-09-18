@@ -22,6 +22,7 @@ for (let i = 0; i < gridHeight; i++) {
     for (let j = 0; j < gridWidth; j++) {
         const tempCell = document.createElement('div');
         tempCell.classList.add('gridCell');
+        tempCell.setAttribute('data-brightness', '100');
         tempGridRow.appendChild(tempCell);
     }
     gridContainer.appendChild(tempGridRow);
@@ -30,14 +31,18 @@ for (let i = 0; i < gridHeight; i++) {
 function paintCell (e, color) {
     const cell = e.target;
     if (cell.className === 'gridCell') {
+        //cell.style.background = `hsl(${color.hue}, ${color.saturation}%, ${color.lightness}%)`;
         cell.style.background = `rgb(${color.red}, ${color.green}, ${color.blue})`;
         cell.classList.add('painted');
     }
     else if (cell.className === 'gridCell painted') {
-        let brightness = cell.style.filter;
-        brightness = Number(brightness.slice(-4, -6))
+        let brightness = cell.dataset.brightness - 20;
+        cell.dataset.brightness = cell.dataset.brightness - 20;
+        cell.style.filter = `brightness(${brightness}%)`;
     }
 }
+
+
 function getRandomRGB(){
     let color = {
         red: null, 
@@ -50,7 +55,15 @@ function getRandomRGB(){
     return color;
 }
 
-let color = getRandomRGB();
+
+function getRandomHSL(){
+    return HSL = {
+        hue: Math.floor(Math.random() * 360),
+        saturation: 90,
+        lightness: 70,
+    }
+}
 
 document.addEventListener('mouseover', 
-    (e)=>{paintCell(e, getRandomRGB());})
+    (e)=>{paintCell(e, getRandomRGB());}) 
+//    (e)=>{paintCell(e, getRandomHSL());})
