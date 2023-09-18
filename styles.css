@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'countryside';
+    src: url('./fonts/Countryside.ttf');
+}
+@font-face {
+    font-family: 'beautifulPeople';
+    src: url('./fonts/BeautifulPeoplePersonalUse-dE0g.ttf');
+}
 body {
     height: 100vh;
     display: flex;
@@ -8,6 +16,12 @@ body {
 }
 h1 {
     text-align: center;
+    font-family: 'countryside';
+}
+
+h2 {
+    font-family: 'beautifulPeople';
+
 }
 
 .header {
@@ -40,14 +54,12 @@ h1 {
 }
 
 .gridRow {
-    border: red 2px solid;
     display: flex;
     flex: 1;
     
 }
 
 .gridCell {
-    border: blue 1px solid;
     flex: 1;
 }
 
@@ -55,7 +67,7 @@ h1 {
     background: #5CAB7D;
     flex: 2;
     display: flex;
-    flex-direction: column;
+    gap: 10px;
     justify-content: center;
     align-items: center;
 }
