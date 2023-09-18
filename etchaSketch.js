@@ -13,8 +13,8 @@ else {
 }
 })
 */
-let gridWidth = 16;
-let gridHeight = 16;
+let gridWidth = 50;
+let gridHeight = 50;
 let colorType = 'rgb'
 
 for (let i = 0; i < gridHeight; i++) {
