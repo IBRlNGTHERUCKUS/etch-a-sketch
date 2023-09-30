@@ -10,7 +10,6 @@ body {
     height: 100vh;
     display: flex;
     flex-direction:column;
-    justify-content: space-around;
     margin: 0;
     background: #e6ede4;
 }
